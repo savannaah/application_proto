@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package applicationproto;
+
+message RequestHeader {
+    string token = 1;
+}
+
+message MasterRequest {
+    RequestHeader header = 1;
+}
+
+message Item {
+    int32 id = 1;
+    string name = 2;
+    string alignment = 3;
+    bool sortable = 4;
+}
+
+message DataField {
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message Rows {
+    map<string, string> Row = 1;
+}
+
+message ApplicationRequest {
+    RequestHeader header = 1;
+    string name = 2;
+}
+
+message ApplicationContentRequest {
+    RequestHeader header = 1;
+    string name = 2;
+    string query = 3;
+}
+
+message MasterResponse {
+    int32 statusCode = 1;
+    string message = 2;
+    message Data {
+        string username = 2;
+        string avatar = 3;
+        string fullName = 4;
+        string customerName = 5;
+        repeated DataField dashboards = 6;
+        repeated DataField applications = 7;
+    }
+    Data data = 3;
+}
+
+message ApplicationResponse {
+    int32 statusCode = 1;
+    string message = 2;
+    message Data {
+        string name = 1;
+        repeated Item columns = 2;
+        repeated DataField relatedRecords = 3;
+    }
+    Data data = 3;
+}
+
+message ApplicationContentResponse {
+    int32 statusCode = 1;
+    string message = 2;
+    message Data {
+        string name = 1;
+        repeated Item columns = 2;
+        repeated Rows rows = 3;
+    }
+    Data data = 3;
+}
+
+service Application {
+    rpc GetMasterData(MasterRequest) returns (MasterResponse);
+    rpc GetApplicationData(ApplicationRequest) returns (ApplicationResponse);
+    rpc GetApplicationContent(ApplicationContentRequest) returns (ApplicationContentResponse);
+}
