@@ -63,45 +63,6 @@ func (m *RequestHeader) GetToken() string {
 	return ""
 }
 
-type MasterRequest struct {
-	Header               *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
-}
-
-func (m *MasterRequest) Reset()         { *m = MasterRequest{} }
-func (m *MasterRequest) String() string { return proto.CompactTextString(m) }
-func (*MasterRequest) ProtoMessage()    {}
-func (*MasterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{1}
-}
-
-func (m *MasterRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_MasterRequest.Unmarshal(m, b)
-}
-func (m *MasterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_MasterRequest.Marshal(b, m, deterministic)
-}
-func (m *MasterRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MasterRequest.Merge(m, src)
-}
-func (m *MasterRequest) XXX_Size() int {
-	return xxx_messageInfo_MasterRequest.Size(m)
-}
-func (m *MasterRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_MasterRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MasterRequest proto.InternalMessageInfo
-
-func (m *MasterRequest) GetHeader() *RequestHeader {
-	if m != nil {
-		return m.Header
-	}
-	return nil
-}
-
 type Item struct {
 	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -117,7 +78,7 @@ func (m *Item) Reset()         { *m = Item{} }
 func (m *Item) String() string { return proto.CompactTextString(m) }
 func (*Item) ProtoMessage()    {}
 func (*Item) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{2}
+	return fileDescriptor_a0b84a42fa06f626, []int{1}
 }
 
 func (m *Item) XXX_Unmarshal(b []byte) error {
@@ -186,7 +147,7 @@ func (m *DataField) Reset()         { *m = DataField{} }
 func (m *DataField) String() string { return proto.CompactTextString(m) }
 func (*DataField) ProtoMessage()    {}
 func (*DataField) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{3}
+	return fileDescriptor_a0b84a42fa06f626, []int{2}
 }
 
 func (m *DataField) XXX_Unmarshal(b []byte) error {
@@ -239,7 +200,7 @@ func (m *Rows) Reset()         { *m = Rows{} }
 func (m *Rows) String() string { return proto.CompactTextString(m) }
 func (*Rows) ProtoMessage()    {}
 func (*Rows) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{4}
+	return fileDescriptor_a0b84a42fa06f626, []int{3}
 }
 
 func (m *Rows) XXX_Unmarshal(b []byte) error {
@@ -267,7 +228,46 @@ func (m *Rows) GetRow() map[string]string {
 	return nil
 }
 
-type ApplicationRequest struct {
+type MasterDataRequest struct {
+	Header               *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
+}
+
+func (m *MasterDataRequest) Reset()         { *m = MasterDataRequest{} }
+func (m *MasterDataRequest) String() string { return proto.CompactTextString(m) }
+func (*MasterDataRequest) ProtoMessage()    {}
+func (*MasterDataRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{4}
+}
+
+func (m *MasterDataRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MasterDataRequest.Unmarshal(m, b)
+}
+func (m *MasterDataRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MasterDataRequest.Marshal(b, m, deterministic)
+}
+func (m *MasterDataRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MasterDataRequest.Merge(m, src)
+}
+func (m *MasterDataRequest) XXX_Size() int {
+	return xxx_messageInfo_MasterDataRequest.Size(m)
+}
+func (m *MasterDataRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_MasterDataRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MasterDataRequest proto.InternalMessageInfo
+
+func (m *MasterDataRequest) GetHeader() *RequestHeader {
+	if m != nil {
+		return m.Header
+	}
+	return nil
+}
+
+type DataRequest struct {
 	Header               *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	Name                 string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
@@ -275,39 +275,39 @@ type ApplicationRequest struct {
 	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *ApplicationRequest) Reset()         { *m = ApplicationRequest{} }
-func (m *ApplicationRequest) String() string { return proto.CompactTextString(m) }
-func (*ApplicationRequest) ProtoMessage()    {}
-func (*ApplicationRequest) Descriptor() ([]byte, []int) {
+func (m *DataRequest) Reset()         { *m = DataRequest{} }
+func (m *DataRequest) String() string { return proto.CompactTextString(m) }
+func (*DataRequest) ProtoMessage()    {}
+func (*DataRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a0b84a42fa06f626, []int{5}
 }
 
-func (m *ApplicationRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ApplicationRequest.Unmarshal(m, b)
+func (m *DataRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DataRequest.Unmarshal(m, b)
 }
-func (m *ApplicationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ApplicationRequest.Marshal(b, m, deterministic)
+func (m *DataRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DataRequest.Marshal(b, m, deterministic)
 }
-func (m *ApplicationRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ApplicationRequest.Merge(m, src)
+func (m *DataRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DataRequest.Merge(m, src)
 }
-func (m *ApplicationRequest) XXX_Size() int {
-	return xxx_messageInfo_ApplicationRequest.Size(m)
+func (m *DataRequest) XXX_Size() int {
+	return xxx_messageInfo_DataRequest.Size(m)
 }
-func (m *ApplicationRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ApplicationRequest.DiscardUnknown(m)
+func (m *DataRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DataRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ApplicationRequest proto.InternalMessageInfo
+var xxx_messageInfo_DataRequest proto.InternalMessageInfo
 
-func (m *ApplicationRequest) GetHeader() *RequestHeader {
+func (m *DataRequest) GetHeader() *RequestHeader {
 	if m != nil {
 		return m.Header
 	}
 	return nil
 }
 
-func (m *ApplicationRequest) GetName() string {
+func (m *DataRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
@@ -369,62 +369,117 @@ func (m *ApplicationContentRequest) GetQuery() string {
 	return ""
 }
 
-type MasterResponse struct {
-	StatusCode           int32                `protobuf:"varint,1,opt,name=statusCode,proto3" json:"statusCode,omitempty"`
-	Message              string               `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	Data                 *MasterResponse_Data `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+type ReferencedContentRequest struct {
+	Header               *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
+	Name                 string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Id                   []int32        `protobuf:"varint,3,rep,packed,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *MasterResponse) Reset()         { *m = MasterResponse{} }
-func (m *MasterResponse) String() string { return proto.CompactTextString(m) }
-func (*MasterResponse) ProtoMessage()    {}
-func (*MasterResponse) Descriptor() ([]byte, []int) {
+func (m *ReferencedContentRequest) Reset()         { *m = ReferencedContentRequest{} }
+func (m *ReferencedContentRequest) String() string { return proto.CompactTextString(m) }
+func (*ReferencedContentRequest) ProtoMessage()    {}
+func (*ReferencedContentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a0b84a42fa06f626, []int{7}
 }
 
-func (m *MasterResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_MasterResponse.Unmarshal(m, b)
+func (m *ReferencedContentRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReferencedContentRequest.Unmarshal(m, b)
 }
-func (m *MasterResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_MasterResponse.Marshal(b, m, deterministic)
+func (m *ReferencedContentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReferencedContentRequest.Marshal(b, m, deterministic)
 }
-func (m *MasterResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MasterResponse.Merge(m, src)
+func (m *ReferencedContentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReferencedContentRequest.Merge(m, src)
 }
-func (m *MasterResponse) XXX_Size() int {
-	return xxx_messageInfo_MasterResponse.Size(m)
+func (m *ReferencedContentRequest) XXX_Size() int {
+	return xxx_messageInfo_ReferencedContentRequest.Size(m)
 }
-func (m *MasterResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MasterResponse.DiscardUnknown(m)
+func (m *ReferencedContentRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReferencedContentRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MasterResponse proto.InternalMessageInfo
+var xxx_messageInfo_ReferencedContentRequest proto.InternalMessageInfo
 
-func (m *MasterResponse) GetStatusCode() int32 {
+func (m *ReferencedContentRequest) GetHeader() *RequestHeader {
+	if m != nil {
+		return m.Header
+	}
+	return nil
+}
+
+func (m *ReferencedContentRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ReferencedContentRequest) GetId() []int32 {
+	if m != nil {
+		return m.Id
+	}
+	return nil
+}
+
+type MasterDataResponse struct {
+	StatusCode           int32                    `protobuf:"varint,1,opt,name=statusCode,proto3" json:"statusCode,omitempty"`
+	Message              string                   `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Data                 *MasterDataResponse_Data `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *MasterDataResponse) Reset()         { *m = MasterDataResponse{} }
+func (m *MasterDataResponse) String() string { return proto.CompactTextString(m) }
+func (*MasterDataResponse) ProtoMessage()    {}
+func (*MasterDataResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{8}
+}
+
+func (m *MasterDataResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MasterDataResponse.Unmarshal(m, b)
+}
+func (m *MasterDataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MasterDataResponse.Marshal(b, m, deterministic)
+}
+func (m *MasterDataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MasterDataResponse.Merge(m, src)
+}
+func (m *MasterDataResponse) XXX_Size() int {
+	return xxx_messageInfo_MasterDataResponse.Size(m)
+}
+func (m *MasterDataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MasterDataResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MasterDataResponse proto.InternalMessageInfo
+
+func (m *MasterDataResponse) GetStatusCode() int32 {
 	if m != nil {
 		return m.StatusCode
 	}
 	return 0
 }
 
-func (m *MasterResponse) GetMessage() string {
+func (m *MasterDataResponse) GetMessage() string {
 	if m != nil {
 		return m.Message
 	}
 	return ""
 }
 
-func (m *MasterResponse) GetData() *MasterResponse_Data {
+func (m *MasterDataResponse) GetData() *MasterDataResponse_Data {
 	if m != nil {
 		return m.Data
 	}
 	return nil
 }
 
-type MasterResponse_Data struct {
+type MasterDataResponse_Data struct {
 	Username             string       `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
 	Avatar               string       `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
 	FullName             string       `protobuf:"bytes,4,opt,name=fullName,proto3" json:"fullName,omitempty"`
@@ -436,129 +491,129 @@ type MasterResponse_Data struct {
 	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *MasterResponse_Data) Reset()         { *m = MasterResponse_Data{} }
-func (m *MasterResponse_Data) String() string { return proto.CompactTextString(m) }
-func (*MasterResponse_Data) ProtoMessage()    {}
-func (*MasterResponse_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{7, 0}
+func (m *MasterDataResponse_Data) Reset()         { *m = MasterDataResponse_Data{} }
+func (m *MasterDataResponse_Data) String() string { return proto.CompactTextString(m) }
+func (*MasterDataResponse_Data) ProtoMessage()    {}
+func (*MasterDataResponse_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{8, 0}
 }
 
-func (m *MasterResponse_Data) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_MasterResponse_Data.Unmarshal(m, b)
+func (m *MasterDataResponse_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MasterDataResponse_Data.Unmarshal(m, b)
 }
-func (m *MasterResponse_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_MasterResponse_Data.Marshal(b, m, deterministic)
+func (m *MasterDataResponse_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MasterDataResponse_Data.Marshal(b, m, deterministic)
 }
-func (m *MasterResponse_Data) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MasterResponse_Data.Merge(m, src)
+func (m *MasterDataResponse_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MasterDataResponse_Data.Merge(m, src)
 }
-func (m *MasterResponse_Data) XXX_Size() int {
-	return xxx_messageInfo_MasterResponse_Data.Size(m)
+func (m *MasterDataResponse_Data) XXX_Size() int {
+	return xxx_messageInfo_MasterDataResponse_Data.Size(m)
 }
-func (m *MasterResponse_Data) XXX_DiscardUnknown() {
-	xxx_messageInfo_MasterResponse_Data.DiscardUnknown(m)
+func (m *MasterDataResponse_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_MasterDataResponse_Data.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MasterResponse_Data proto.InternalMessageInfo
+var xxx_messageInfo_MasterDataResponse_Data proto.InternalMessageInfo
 
-func (m *MasterResponse_Data) GetUsername() string {
+func (m *MasterDataResponse_Data) GetUsername() string {
 	if m != nil {
 		return m.Username
 	}
 	return ""
 }
 
-func (m *MasterResponse_Data) GetAvatar() string {
+func (m *MasterDataResponse_Data) GetAvatar() string {
 	if m != nil {
 		return m.Avatar
 	}
 	return ""
 }
 
-func (m *MasterResponse_Data) GetFullName() string {
+func (m *MasterDataResponse_Data) GetFullName() string {
 	if m != nil {
 		return m.FullName
 	}
 	return ""
 }
 
-func (m *MasterResponse_Data) GetCustomerName() string {
+func (m *MasterDataResponse_Data) GetCustomerName() string {
 	if m != nil {
 		return m.CustomerName
 	}
 	return ""
 }
 
-func (m *MasterResponse_Data) GetDashboards() []*DataField {
+func (m *MasterDataResponse_Data) GetDashboards() []*DataField {
 	if m != nil {
 		return m.Dashboards
 	}
 	return nil
 }
 
-func (m *MasterResponse_Data) GetApplications() []*DataField {
+func (m *MasterDataResponse_Data) GetApplications() []*DataField {
 	if m != nil {
 		return m.Applications
 	}
 	return nil
 }
 
-type ApplicationResponse struct {
-	StatusCode           int32                     `protobuf:"varint,1,opt,name=statusCode,proto3" json:"statusCode,omitempty"`
-	Message              string                    `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	Data                 *ApplicationResponse_Data `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
-	XXX_unrecognized     []byte                    `json:"-"`
-	XXX_sizecache        int32                     `json:"-"`
+type ApplicationDataResponse struct {
+	StatusCode           int32                         `protobuf:"varint,1,opt,name=statusCode,proto3" json:"statusCode,omitempty"`
+	Message              string                        `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Data                 *ApplicationDataResponse_Data `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
+	XXX_unrecognized     []byte                        `json:"-"`
+	XXX_sizecache        int32                         `json:"-"`
 }
 
-func (m *ApplicationResponse) Reset()         { *m = ApplicationResponse{} }
-func (m *ApplicationResponse) String() string { return proto.CompactTextString(m) }
-func (*ApplicationResponse) ProtoMessage()    {}
-func (*ApplicationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{8}
+func (m *ApplicationDataResponse) Reset()         { *m = ApplicationDataResponse{} }
+func (m *ApplicationDataResponse) String() string { return proto.CompactTextString(m) }
+func (*ApplicationDataResponse) ProtoMessage()    {}
+func (*ApplicationDataResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{9}
 }
 
-func (m *ApplicationResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ApplicationResponse.Unmarshal(m, b)
+func (m *ApplicationDataResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ApplicationDataResponse.Unmarshal(m, b)
 }
-func (m *ApplicationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ApplicationResponse.Marshal(b, m, deterministic)
+func (m *ApplicationDataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ApplicationDataResponse.Marshal(b, m, deterministic)
 }
-func (m *ApplicationResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ApplicationResponse.Merge(m, src)
+func (m *ApplicationDataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ApplicationDataResponse.Merge(m, src)
 }
-func (m *ApplicationResponse) XXX_Size() int {
-	return xxx_messageInfo_ApplicationResponse.Size(m)
+func (m *ApplicationDataResponse) XXX_Size() int {
+	return xxx_messageInfo_ApplicationDataResponse.Size(m)
 }
-func (m *ApplicationResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ApplicationResponse.DiscardUnknown(m)
+func (m *ApplicationDataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ApplicationDataResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ApplicationResponse proto.InternalMessageInfo
+var xxx_messageInfo_ApplicationDataResponse proto.InternalMessageInfo
 
-func (m *ApplicationResponse) GetStatusCode() int32 {
+func (m *ApplicationDataResponse) GetStatusCode() int32 {
 	if m != nil {
 		return m.StatusCode
 	}
 	return 0
 }
 
-func (m *ApplicationResponse) GetMessage() string {
+func (m *ApplicationDataResponse) GetMessage() string {
 	if m != nil {
 		return m.Message
 	}
 	return ""
 }
 
-func (m *ApplicationResponse) GetData() *ApplicationResponse_Data {
+func (m *ApplicationDataResponse) GetData() *ApplicationDataResponse_Data {
 	if m != nil {
 		return m.Data
 	}
 	return nil
 }
 
-type ApplicationResponse_Data struct {
+type ApplicationDataResponse_Data struct {
 	Name                 string       `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Columns              []*Item      `protobuf:"bytes,2,rep,name=columns,proto3" json:"columns,omitempty"`
 	RelatedRecords       []*DataField `protobuf:"bytes,3,rep,name=relatedRecords,proto3" json:"relatedRecords,omitempty"`
@@ -567,156 +622,250 @@ type ApplicationResponse_Data struct {
 	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *ApplicationResponse_Data) Reset()         { *m = ApplicationResponse_Data{} }
-func (m *ApplicationResponse_Data) String() string { return proto.CompactTextString(m) }
-func (*ApplicationResponse_Data) ProtoMessage()    {}
-func (*ApplicationResponse_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{8, 0}
+func (m *ApplicationDataResponse_Data) Reset()         { *m = ApplicationDataResponse_Data{} }
+func (m *ApplicationDataResponse_Data) String() string { return proto.CompactTextString(m) }
+func (*ApplicationDataResponse_Data) ProtoMessage()    {}
+func (*ApplicationDataResponse_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{9, 0}
 }
 
-func (m *ApplicationResponse_Data) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ApplicationResponse_Data.Unmarshal(m, b)
+func (m *ApplicationDataResponse_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ApplicationDataResponse_Data.Unmarshal(m, b)
 }
-func (m *ApplicationResponse_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ApplicationResponse_Data.Marshal(b, m, deterministic)
+func (m *ApplicationDataResponse_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ApplicationDataResponse_Data.Marshal(b, m, deterministic)
 }
-func (m *ApplicationResponse_Data) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ApplicationResponse_Data.Merge(m, src)
+func (m *ApplicationDataResponse_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ApplicationDataResponse_Data.Merge(m, src)
 }
-func (m *ApplicationResponse_Data) XXX_Size() int {
-	return xxx_messageInfo_ApplicationResponse_Data.Size(m)
+func (m *ApplicationDataResponse_Data) XXX_Size() int {
+	return xxx_messageInfo_ApplicationDataResponse_Data.Size(m)
 }
-func (m *ApplicationResponse_Data) XXX_DiscardUnknown() {
-	xxx_messageInfo_ApplicationResponse_Data.DiscardUnknown(m)
+func (m *ApplicationDataResponse_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_ApplicationDataResponse_Data.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ApplicationResponse_Data proto.InternalMessageInfo
+var xxx_messageInfo_ApplicationDataResponse_Data proto.InternalMessageInfo
 
-func (m *ApplicationResponse_Data) GetName() string {
+func (m *ApplicationDataResponse_Data) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *ApplicationResponse_Data) GetColumns() []*Item {
+func (m *ApplicationDataResponse_Data) GetColumns() []*Item {
 	if m != nil {
 		return m.Columns
 	}
 	return nil
 }
 
-func (m *ApplicationResponse_Data) GetRelatedRecords() []*DataField {
+func (m *ApplicationDataResponse_Data) GetRelatedRecords() []*DataField {
 	if m != nil {
 		return m.RelatedRecords
 	}
 	return nil
 }
 
-type ApplicationContentResponse struct {
-	StatusCode           int32                            `protobuf:"varint,1,opt,name=statusCode,proto3" json:"statusCode,omitempty"`
-	Message              string                           `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	Data                 *ApplicationContentResponse_Data `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
-	XXX_unrecognized     []byte                           `json:"-"`
-	XXX_sizecache        int32                            `json:"-"`
+type ReferencedDataResponse struct {
+	StatusCode           int32                        `protobuf:"varint,1,opt,name=statusCode,proto3" json:"statusCode,omitempty"`
+	Message              string                       `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Data                 *ReferencedDataResponse_Data `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
+	XXX_unrecognized     []byte                       `json:"-"`
+	XXX_sizecache        int32                        `json:"-"`
 }
 
-func (m *ApplicationContentResponse) Reset()         { *m = ApplicationContentResponse{} }
-func (m *ApplicationContentResponse) String() string { return proto.CompactTextString(m) }
-func (*ApplicationContentResponse) ProtoMessage()    {}
-func (*ApplicationContentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{9}
+func (m *ReferencedDataResponse) Reset()         { *m = ReferencedDataResponse{} }
+func (m *ReferencedDataResponse) String() string { return proto.CompactTextString(m) }
+func (*ReferencedDataResponse) ProtoMessage()    {}
+func (*ReferencedDataResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{10}
 }
 
-func (m *ApplicationContentResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ApplicationContentResponse.Unmarshal(m, b)
+func (m *ReferencedDataResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReferencedDataResponse.Unmarshal(m, b)
 }
-func (m *ApplicationContentResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ApplicationContentResponse.Marshal(b, m, deterministic)
+func (m *ReferencedDataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReferencedDataResponse.Marshal(b, m, deterministic)
 }
-func (m *ApplicationContentResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ApplicationContentResponse.Merge(m, src)
+func (m *ReferencedDataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReferencedDataResponse.Merge(m, src)
 }
-func (m *ApplicationContentResponse) XXX_Size() int {
-	return xxx_messageInfo_ApplicationContentResponse.Size(m)
+func (m *ReferencedDataResponse) XXX_Size() int {
+	return xxx_messageInfo_ReferencedDataResponse.Size(m)
 }
-func (m *ApplicationContentResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ApplicationContentResponse.DiscardUnknown(m)
+func (m *ReferencedDataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReferencedDataResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ApplicationContentResponse proto.InternalMessageInfo
+var xxx_messageInfo_ReferencedDataResponse proto.InternalMessageInfo
 
-func (m *ApplicationContentResponse) GetStatusCode() int32 {
+func (m *ReferencedDataResponse) GetStatusCode() int32 {
 	if m != nil {
 		return m.StatusCode
 	}
 	return 0
 }
 
-func (m *ApplicationContentResponse) GetMessage() string {
+func (m *ReferencedDataResponse) GetMessage() string {
 	if m != nil {
 		return m.Message
 	}
 	return ""
 }
 
-func (m *ApplicationContentResponse) GetData() *ApplicationContentResponse_Data {
+func (m *ReferencedDataResponse) GetData() *ReferencedDataResponse_Data {
 	if m != nil {
 		return m.Data
 	}
 	return nil
 }
 
-type ApplicationContentResponse_Data struct {
+type ReferencedDataResponse_Data struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Columns              []*Item  `protobuf:"bytes,2,rep,name=columns,proto3" json:"columns,omitempty"`
-	Rows                 []*Rows  `protobuf:"bytes,3,rep,name=rows,proto3" json:"rows,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ApplicationContentResponse_Data) Reset()         { *m = ApplicationContentResponse_Data{} }
-func (m *ApplicationContentResponse_Data) String() string { return proto.CompactTextString(m) }
-func (*ApplicationContentResponse_Data) ProtoMessage()    {}
-func (*ApplicationContentResponse_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a0b84a42fa06f626, []int{9, 0}
+func (m *ReferencedDataResponse_Data) Reset()         { *m = ReferencedDataResponse_Data{} }
+func (m *ReferencedDataResponse_Data) String() string { return proto.CompactTextString(m) }
+func (*ReferencedDataResponse_Data) ProtoMessage()    {}
+func (*ReferencedDataResponse_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{10, 0}
 }
 
-func (m *ApplicationContentResponse_Data) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ApplicationContentResponse_Data.Unmarshal(m, b)
+func (m *ReferencedDataResponse_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReferencedDataResponse_Data.Unmarshal(m, b)
 }
-func (m *ApplicationContentResponse_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ApplicationContentResponse_Data.Marshal(b, m, deterministic)
+func (m *ReferencedDataResponse_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReferencedDataResponse_Data.Marshal(b, m, deterministic)
 }
-func (m *ApplicationContentResponse_Data) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ApplicationContentResponse_Data.Merge(m, src)
+func (m *ReferencedDataResponse_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReferencedDataResponse_Data.Merge(m, src)
 }
-func (m *ApplicationContentResponse_Data) XXX_Size() int {
-	return xxx_messageInfo_ApplicationContentResponse_Data.Size(m)
+func (m *ReferencedDataResponse_Data) XXX_Size() int {
+	return xxx_messageInfo_ReferencedDataResponse_Data.Size(m)
 }
-func (m *ApplicationContentResponse_Data) XXX_DiscardUnknown() {
-	xxx_messageInfo_ApplicationContentResponse_Data.DiscardUnknown(m)
+func (m *ReferencedDataResponse_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReferencedDataResponse_Data.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ApplicationContentResponse_Data proto.InternalMessageInfo
+var xxx_messageInfo_ReferencedDataResponse_Data proto.InternalMessageInfo
 
-func (m *ApplicationContentResponse_Data) GetName() string {
+func (m *ReferencedDataResponse_Data) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *ApplicationContentResponse_Data) GetColumns() []*Item {
+func (m *ReferencedDataResponse_Data) GetColumns() []*Item {
 	if m != nil {
 		return m.Columns
 	}
 	return nil
 }
 
-func (m *ApplicationContentResponse_Data) GetRows() []*Rows {
+type ContentResponse struct {
+	StatusCode           int32                 `protobuf:"varint,1,opt,name=statusCode,proto3" json:"statusCode,omitempty"`
+	Message              string                `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Data                 *ContentResponse_Data `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *ContentResponse) Reset()         { *m = ContentResponse{} }
+func (m *ContentResponse) String() string { return proto.CompactTextString(m) }
+func (*ContentResponse) ProtoMessage()    {}
+func (*ContentResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{11}
+}
+
+func (m *ContentResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ContentResponse.Unmarshal(m, b)
+}
+func (m *ContentResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ContentResponse.Marshal(b, m, deterministic)
+}
+func (m *ContentResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContentResponse.Merge(m, src)
+}
+func (m *ContentResponse) XXX_Size() int {
+	return xxx_messageInfo_ContentResponse.Size(m)
+}
+func (m *ContentResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContentResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContentResponse proto.InternalMessageInfo
+
+func (m *ContentResponse) GetStatusCode() int32 {
+	if m != nil {
+		return m.StatusCode
+	}
+	return 0
+}
+
+func (m *ContentResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+func (m *ContentResponse) GetData() *ContentResponse_Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type ContentResponse_Data struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Rows                 []*Rows  `protobuf:"bytes,2,rep,name=rows,proto3" json:"rows,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ContentResponse_Data) Reset()         { *m = ContentResponse_Data{} }
+func (m *ContentResponse_Data) String() string { return proto.CompactTextString(m) }
+func (*ContentResponse_Data) ProtoMessage()    {}
+func (*ContentResponse_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a0b84a42fa06f626, []int{11, 0}
+}
+
+func (m *ContentResponse_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ContentResponse_Data.Unmarshal(m, b)
+}
+func (m *ContentResponse_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ContentResponse_Data.Marshal(b, m, deterministic)
+}
+func (m *ContentResponse_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ContentResponse_Data.Merge(m, src)
+}
+func (m *ContentResponse_Data) XXX_Size() int {
+	return xxx_messageInfo_ContentResponse_Data.Size(m)
+}
+func (m *ContentResponse_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_ContentResponse_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ContentResponse_Data proto.InternalMessageInfo
+
+func (m *ContentResponse_Data) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ContentResponse_Data) GetRows() []*Rows {
 	if m != nil {
 		return m.Rows
 	}
@@ -725,66 +874,74 @@ func (m *ApplicationContentResponse_Data) GetRows() []*Rows {
 
 func init() {
 	proto.RegisterType((*RequestHeader)(nil), "applicationproto.RequestHeader")
-	proto.RegisterType((*MasterRequest)(nil), "applicationproto.MasterRequest")
 	proto.RegisterType((*Item)(nil), "applicationproto.Item")
 	proto.RegisterType((*DataField)(nil), "applicationproto.DataField")
 	proto.RegisterType((*Rows)(nil), "applicationproto.Rows")
 	proto.RegisterMapType((map[string]string)(nil), "applicationproto.Rows.RowEntry")
-	proto.RegisterType((*ApplicationRequest)(nil), "applicationproto.ApplicationRequest")
+	proto.RegisterType((*MasterDataRequest)(nil), "applicationproto.MasterDataRequest")
+	proto.RegisterType((*DataRequest)(nil), "applicationproto.DataRequest")
 	proto.RegisterType((*ApplicationContentRequest)(nil), "applicationproto.ApplicationContentRequest")
-	proto.RegisterType((*MasterResponse)(nil), "applicationproto.MasterResponse")
-	proto.RegisterType((*MasterResponse_Data)(nil), "applicationproto.MasterResponse.Data")
-	proto.RegisterType((*ApplicationResponse)(nil), "applicationproto.ApplicationResponse")
-	proto.RegisterType((*ApplicationResponse_Data)(nil), "applicationproto.ApplicationResponse.Data")
-	proto.RegisterType((*ApplicationContentResponse)(nil), "applicationproto.ApplicationContentResponse")
-	proto.RegisterType((*ApplicationContentResponse_Data)(nil), "applicationproto.ApplicationContentResponse.Data")
+	proto.RegisterType((*ReferencedContentRequest)(nil), "applicationproto.ReferencedContentRequest")
+	proto.RegisterType((*MasterDataResponse)(nil), "applicationproto.MasterDataResponse")
+	proto.RegisterType((*MasterDataResponse_Data)(nil), "applicationproto.MasterDataResponse.Data")
+	proto.RegisterType((*ApplicationDataResponse)(nil), "applicationproto.ApplicationDataResponse")
+	proto.RegisterType((*ApplicationDataResponse_Data)(nil), "applicationproto.ApplicationDataResponse.Data")
+	proto.RegisterType((*ReferencedDataResponse)(nil), "applicationproto.ReferencedDataResponse")
+	proto.RegisterType((*ReferencedDataResponse_Data)(nil), "applicationproto.ReferencedDataResponse.Data")
+	proto.RegisterType((*ContentResponse)(nil), "applicationproto.ContentResponse")
+	proto.RegisterType((*ContentResponse_Data)(nil), "applicationproto.ContentResponse.Data")
 }
 
 func init() { proto.RegisterFile("service.proto", fileDescriptor_a0b84a42fa06f626) }
 
 var fileDescriptor_a0b84a42fa06f626 = []byte{
-	// 654 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x54, 0xcd, 0x6e, 0xd3, 0x40,
-	0x10, 0x96, 0x1d, 0x27, 0x6d, 0x27, 0x4d, 0x55, 0x0d, 0x50, 0x99, 0x80, 0x68, 0x64, 0x51, 0xa9,
-	0x2a, 0x28, 0xa2, 0x45, 0xe2, 0x57, 0x02, 0xa1, 0x52, 0x5a, 0x0e, 0x20, 0xb1, 0x6f, 0xb0, 0x8d,
-	0x87, 0xd6, 0xaa, 0xe3, 0x4d, 0x77, 0xd7, 0x0d, 0xb9, 0x20, 0x4e, 0xdc, 0x39, 0xf1, 0x00, 0xbc,
-	0x04, 0x8f, 0xc6, 0x11, 0xed, 0xda, 0x4e, 0xed, 0x26, 0x25, 0x45, 0x81, 0x8b, 0xe5, 0x99, 0x9d,
-	0xdf, 0xef, 0xfb, 0x76, 0xa1, 0xa5, 0x48, 0x9e, 0x45, 0x3d, 0xea, 0x0e, 0xa4, 0xd0, 0x02, 0x57,
-	0xf9, 0x60, 0x10, 0x47, 0x3d, 0xae, 0x23, 0x91, 0x58, 0x4f, 0xb0, 0x01, 0x2d, 0x46, 0xa7, 0x29,
-	0x29, 0x7d, 0x40, 0x3c, 0x24, 0x89, 0xd7, 0xa1, 0xae, 0xc5, 0x09, 0x25, 0xbe, 0xd3, 0x71, 0x36,
-	0x97, 0x58, 0x66, 0x04, 0x07, 0xd0, 0x7a, 0xc7, 0x95, 0x26, 0x99, 0x07, 0xe3, 0x63, 0x68, 0x1c,
-	0xdb, 0x04, 0x1b, 0xd7, 0xdc, 0x59, 0xef, 0x5e, 0x2c, 0xdd, 0xad, 0xd4, 0x65, 0x79, 0x78, 0xf0,
-	0xd5, 0x01, 0xef, 0xad, 0xa6, 0x3e, 0xae, 0x80, 0x1b, 0x85, 0x36, 0xbb, 0xce, 0xdc, 0x28, 0x44,
-	0x04, 0x2f, 0xe1, 0x7d, 0xf2, 0x5d, 0xdb, 0xd7, 0xfe, 0x63, 0x07, 0x9a, 0x61, 0xa4, 0x06, 0x31,
-	0x1f, 0xbd, 0x37, 0x47, 0x35, 0x7b, 0x54, 0x76, 0xe1, 0x6d, 0x58, 0xe2, 0x71, 0x74, 0x94, 0xf4,
-	0x29, 0xd1, 0xbe, 0x67, 0xcf, 0xcf, 0x1d, 0xd8, 0x86, 0x45, 0x25, 0xa4, 0xe6, 0x87, 0x31, 0xf9,
-	0xf5, 0x8e, 0xb3, 0xb9, 0xc8, 0xc6, 0x76, 0xf0, 0x01, 0x96, 0x5e, 0x73, 0xcd, 0xdf, 0x44, 0x14,
-	0x87, 0x57, 0x1e, 0x86, 0x54, 0x4f, 0x46, 0x03, 0xb3, 0xe3, 0x78, 0x98, 0x73, 0x57, 0x70, 0x0a,
-	0x1e, 0x13, 0x43, 0x85, 0xdb, 0x50, 0x63, 0x62, 0xe8, 0x3b, 0x9d, 0xda, 0x25, 0xc8, 0x88, 0xa1,
-	0x32, 0x9f, 0xbd, 0x44, 0xcb, 0x11, 0x33, 0xb1, 0xed, 0x47, 0xb0, 0x58, 0x38, 0x70, 0x15, 0x6a,
-	0x27, 0x34, 0xca, 0x09, 0x30, 0xbf, 0x86, 0x94, 0x33, 0x1e, 0xa7, 0xc5, 0x3c, 0x99, 0xf1, 0xcc,
-	0x7d, 0xe2, 0x04, 0x1c, 0xf0, 0xd5, 0x79, 0xf9, 0x79, 0xd9, 0x99, 0xb6, 0x77, 0xf0, 0x19, 0x6e,
-	0x96, 0x5a, 0xec, 0x8a, 0x44, 0x53, 0xa2, 0xff, 0x47, 0x27, 0xb3, 0xe6, 0x69, 0x4a, 0x72, 0x94,
-	0x63, 0x9b, 0x19, 0xc1, 0x97, 0x1a, 0xac, 0x14, 0xe2, 0x53, 0x03, 0x91, 0x28, 0xc2, 0x3b, 0x00,
-	0x4a, 0x73, 0x9d, 0xaa, 0x5d, 0x11, 0x52, 0x4e, 0x5b, 0xc9, 0x83, 0x3e, 0x2c, 0xf4, 0x49, 0x29,
-	0x7e, 0x54, 0xd4, 0x2f, 0x4c, 0x7c, 0x0a, 0x5e, 0xc8, 0x35, 0xb7, 0x1d, 0x9a, 0x3b, 0x1b, 0x93,
-	0xd3, 0x56, 0x3b, 0x75, 0x8d, 0x44, 0x98, 0x4d, 0x69, 0xff, 0x72, 0xc0, 0x33, 0xa6, 0x51, 0x55,
-	0xaa, 0x48, 0x96, 0xc6, 0x1f, 0xdb, 0xb8, 0x06, 0x0d, 0x7e, 0xc6, 0x35, 0x97, 0xf9, 0x0e, 0xb9,
-	0x65, 0x72, 0x3e, 0xa6, 0x71, 0x6c, 0x65, 0x9c, 0xc9, 0x74, 0x6c, 0x63, 0x00, 0xcb, 0xbd, 0x54,
-	0x69, 0xd1, 0x27, 0x69, 0xcf, 0xeb, 0xf6, 0xbc, 0xe2, 0xc3, 0xe7, 0x00, 0x21, 0x57, 0xc7, 0x87,
-	0x82, 0xcb, 0x50, 0xf9, 0x0d, 0xab, 0xac, 0x5b, 0x93, 0xd3, 0x8f, 0x15, 0xcd, 0x4a, 0xe1, 0xf8,
-	0x12, 0x96, 0x4b, 0x91, 0xca, 0x5f, 0x98, 0x9d, 0x5e, 0x49, 0x08, 0x7e, 0xb8, 0x70, 0xad, 0x22,
-	0xb3, 0xb9, 0x79, 0x78, 0x51, 0xe1, 0x61, 0x6b, 0x72, 0x94, 0x29, 0xed, 0xca, 0x64, 0x7c, 0x2b,
-	0xc8, 0x28, 0x74, 0xe4, 0x94, 0x74, 0xf4, 0x00, 0x16, 0x7a, 0x22, 0x4e, 0xfb, 0x89, 0xf2, 0x5d,
-	0xbb, 0xea, 0xda, 0x64, 0x7d, 0xf3, 0x06, 0xb1, 0x22, 0x0c, 0x77, 0x61, 0x45, 0x52, 0xcc, 0x35,
-	0x85, 0x8c, 0x7a, 0xc2, 0x40, 0x5c, 0x9b, 0x8d, 0xd1, 0x85, 0x94, 0xe0, 0xbb, 0x0b, 0xed, 0x69,
-	0x37, 0x65, 0x6e, 0xb0, 0xf6, 0x2a, 0x60, 0x6d, 0xff, 0x11, 0xac, 0x0b, 0x5d, 0xcb, 0x98, 0x7d,
-	0xfa, 0xa7, 0x90, 0x6d, 0x81, 0x27, 0xc5, 0xb0, 0x00, 0x6a, 0x6d, 0xfa, 0x2b, 0xc7, 0x6c, 0xcc,
-	0xce, 0x4f, 0x17, 0x9a, 0xa5, 0x19, 0x91, 0x41, 0x6b, 0x9f, 0x74, 0x76, 0xd5, 0xec, 0x48, 0xeb,
-	0x97, 0x5f, 0x44, 0xfb, 0x78, 0xb4, 0x3b, 0xb3, 0x6e, 0x2a, 0x72, 0xc0, 0x7d, 0xd2, 0xa5, 0x2e,
-	0xb6, 0xf0, 0xdd, 0x19, 0xca, 0xca, 0xaa, 0x6f, 0x5c, 0x49, 0x7f, 0x28, 0xe1, 0x46, 0xb5, 0x45,
-	0x0e, 0x36, 0xde, 0xbb, 0x1a, 0x25, 0x59, 0xb3, 0xfb, 0x7f, 0xc3, 0xdf, 0x61, 0xc3, 0x46, 0x3c,
-	0xfc, 0x1d, 0x00, 0x00, 0xff, 0xff, 0x01, 0x85, 0xe8, 0x36, 0xca, 0x07, 0x00, 0x00,
+	// 731 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x55, 0xcd, 0x6e, 0xd3, 0x40,
+	0x10, 0x96, 0xe3, 0x24, 0x6d, 0x27, 0x6d, 0x69, 0x47, 0xa5, 0x98, 0xf0, 0x17, 0xcc, 0x8f, 0xd2,
+	0x22, 0x22, 0x28, 0x12, 0xa0, 0x22, 0x84, 0x4a, 0xa1, 0x05, 0xa9, 0x20, 0xe1, 0x63, 0x85, 0x90,
+	0xb6, 0xf1, 0xb4, 0xb5, 0xea, 0xd8, 0xe9, 0xee, 0xba, 0x51, 0x2e, 0x1c, 0x11, 0x57, 0x9e, 0x83,
+	0x87, 0xe1, 0x21, 0x78, 0x08, 0x38, 0xa2, 0xdd, 0xd8, 0x89, 0x9d, 0x84, 0x24, 0x88, 0xf4, 0x12,
+	0x65, 0xfe, 0x76, 0xe6, 0xfb, 0xe6, 0xc7, 0xb0, 0x20, 0x88, 0x9f, 0x79, 0x75, 0xaa, 0x35, 0x79,
+	0x28, 0x43, 0x5c, 0x62, 0xcd, 0xa6, 0xef, 0xd5, 0x99, 0xf4, 0xc2, 0x40, 0x6b, 0xec, 0x3b, 0xb0,
+	0xe0, 0xd0, 0x69, 0x44, 0x42, 0xbe, 0x21, 0xe6, 0x12, 0xc7, 0x15, 0x28, 0xc8, 0xf0, 0x84, 0x02,
+	0xcb, 0xa8, 0x18, 0xd5, 0x39, 0xa7, 0x23, 0xd8, 0x5f, 0x0c, 0xc8, 0xbf, 0x95, 0xd4, 0xc0, 0x45,
+	0xc8, 0x79, 0xae, 0xb6, 0x15, 0x9c, 0x9c, 0xe7, 0x22, 0x42, 0x3e, 0x60, 0x0d, 0xb2, 0x72, 0xda,
+	0x5b, 0xff, 0xc7, 0x0a, 0x94, 0x5c, 0x4f, 0x34, 0x7d, 0xd6, 0x7e, 0xaf, 0x4c, 0xa6, 0x36, 0xa5,
+	0x55, 0x78, 0x15, 0xe6, 0x98, 0xef, 0x1d, 0x05, 0x0d, 0x0a, 0xa4, 0x95, 0xd7, 0xf6, 0x9e, 0x02,
+	0xcb, 0x30, 0x2b, 0x42, 0x2e, 0xd9, 0x81, 0x4f, 0x56, 0xa1, 0x62, 0x54, 0x67, 0x9d, 0xae, 0x6c,
+	0x7f, 0x80, 0xb9, 0x57, 0x4c, 0xb2, 0x1d, 0x8f, 0x7c, 0x77, 0xe2, 0x62, 0x48, 0xd4, 0xb9, 0xd7,
+	0x54, 0xa0, 0xbb, 0xc5, 0xf4, 0x54, 0xf6, 0x29, 0xe4, 0x9d, 0xb0, 0x25, 0xf0, 0x21, 0x98, 0x4e,
+	0xd8, 0xb2, 0x8c, 0x8a, 0x59, 0x2d, 0x6d, 0xdc, 0xa8, 0xf5, 0x53, 0x55, 0x53, 0x4e, 0xea, 0xe7,
+	0x75, 0x20, 0x79, 0xdb, 0x51, 0xbe, 0xe5, 0xc7, 0x30, 0x9b, 0x28, 0x70, 0x09, 0xcc, 0x13, 0x6a,
+	0xc7, 0xb4, 0xa9, 0xbf, 0x8a, 0xca, 0x33, 0xe6, 0x47, 0x49, 0x3d, 0x1d, 0x61, 0x33, 0xf7, 0xd4,
+	0xb0, 0xf7, 0x60, 0xf9, 0x1d, 0x13, 0x92, 0xb8, 0xc2, 0x12, 0xf3, 0x8f, 0x4f, 0xa0, 0x78, 0xac,
+	0x7b, 0xa0, 0xdf, 0x18, 0x5e, 0x42, 0xba, 0x55, 0x4e, 0xec, 0x6e, 0xef, 0x43, 0x69, 0x1a, 0xef,
+	0x0c, 0xa3, 0xcf, 0xfe, 0x0c, 0x97, 0xb7, 0x7a, 0xd1, 0xdb, 0x61, 0x20, 0x29, 0x90, 0xe7, 0x91,
+	0x49, 0xb1, 0x75, 0x1a, 0x11, 0x6f, 0xc7, 0x2d, 0xea, 0x08, 0x76, 0x0b, 0x2c, 0x87, 0x0e, 0x89,
+	0x53, 0x50, 0x27, 0xf7, 0x3c, 0xd3, 0x77, 0x66, 0xc9, 0xac, 0x98, 0x9d, 0x59, 0xb2, 0xbf, 0x9a,
+	0x80, 0xe9, 0x1e, 0x89, 0x66, 0x18, 0x08, 0xc2, 0xeb, 0x00, 0x42, 0x32, 0x19, 0x89, 0xed, 0xd0,
+	0xa5, 0x78, 0xf4, 0x52, 0x1a, 0xb4, 0x60, 0xa6, 0x41, 0x42, 0xb0, 0xa3, 0xe4, 0xf5, 0x44, 0xc4,
+	0xe7, 0x90, 0x77, 0x99, 0x64, 0x1a, 0x5e, 0x69, 0x63, 0x6d, 0xb0, 0xd6, 0xc1, 0x6c, 0x35, 0x2d,
+	0xe8, 0xb0, 0xf2, 0x6f, 0x03, 0xf2, 0x4a, 0x54, 0xdb, 0x11, 0x09, 0xe2, 0x29, 0x00, 0x5d, 0x19,
+	0x57, 0xa1, 0xc8, 0xce, 0x98, 0x64, 0x3c, 0x26, 0x31, 0x96, 0x54, 0xcc, 0x61, 0xe4, 0xfb, 0x7a,
+	0x1d, 0x3b, 0xeb, 0xd6, 0x95, 0xd1, 0x86, 0xf9, 0x7a, 0x24, 0x64, 0xd8, 0x20, 0xae, 0xed, 0x05,
+	0x6d, 0xcf, 0xe8, 0xf0, 0x19, 0x80, 0xcb, 0xc4, 0xf1, 0x41, 0xc8, 0xb8, 0x2b, 0xac, 0xa2, 0xde,
+	0x90, 0x2b, 0x83, 0x08, 0xba, 0x9b, 0xe9, 0xa4, 0xdc, 0xf1, 0x05, 0xcc, 0xa7, 0x3c, 0x85, 0x35,
+	0x33, 0x3e, 0x3c, 0x13, 0x60, 0x7f, 0xcf, 0xc1, 0xa5, 0xd4, 0x10, 0x4e, 0xa9, 0x1f, 0x2f, 0x33,
+	0xfd, 0xa8, 0x0d, 0x96, 0xf3, 0x97, 0x94, 0xe9, 0xa6, 0x7c, 0x4b, 0x9a, 0x92, 0x4c, 0x94, 0x91,
+	0x9a, 0xa8, 0x07, 0x30, 0x53, 0x0f, 0xfd, 0xa8, 0x11, 0x08, 0x2b, 0xa7, 0x21, 0xaf, 0x0e, 0xe6,
+	0x50, 0x37, 0xd5, 0x49, 0xdc, 0x70, 0x1b, 0x16, 0x39, 0xf9, 0x4c, 0x92, 0xeb, 0x50, 0x3d, 0x54,
+	0x54, 0x9b, 0xe3, 0xb9, 0xea, 0x0b, 0xb1, 0x7f, 0x1a, 0xb0, 0xda, 0x5b, 0x99, 0x29, 0x91, 0xb5,
+	0x95, 0x21, 0xeb, 0xfe, 0xb0, 0x45, 0x1b, 0x96, 0x31, 0xcd, 0xd5, 0xde, 0x34, 0xa9, 0xb2, 0x7f,
+	0x18, 0x70, 0xa1, 0x7b, 0x0e, 0xfe, 0x1b, 0xde, 0x66, 0x06, 0xde, 0xdd, 0xc1, 0xe4, 0x7d, 0xa9,
+	0xd2, 0xb8, 0x76, 0x46, 0xe0, 0x5a, 0x87, 0x3c, 0x0f, 0x5b, 0x23, 0x40, 0xa9, 0x6f, 0x8a, 0xa3,
+	0x7d, 0x36, 0x7e, 0x99, 0x50, 0x4a, 0x8d, 0x1c, 0xee, 0xc3, 0xc2, 0x2e, 0xc9, 0xde, 0x51, 0xc0,
+	0x5b, 0xa3, 0x4f, 0x86, 0x3e, 0x74, 0xe5, 0xdb, 0x93, 0xdc, 0x15, 0xfc, 0x04, 0xb8, 0x4b, 0xb2,
+	0x6f, 0xc0, 0xf1, 0xda, 0xf0, 0x31, 0x4b, 0x9e, 0x5e, 0x9b, 0x78, 0x45, 0xf0, 0x23, 0x2c, 0xef,
+	0x92, 0xcc, 0xce, 0xc4, 0xb8, 0xe7, 0xab, 0x93, 0x0e, 0x15, 0x1e, 0xc1, 0xc5, 0x6c, 0xf5, 0x71,
+	0x77, 0xf0, 0xde, 0xc8, 0x0a, 0xb3, 0x5f, 0x8f, 0xf2, 0xcd, 0xb1, 0x5d, 0x46, 0x82, 0x95, 0x0c,
+	0x8c, 0x24, 0xcf, 0xfa, 0xa8, 0x52, 0xff, 0x39, 0xcd, 0x41, 0x51, 0xab, 0x1f, 0xfd, 0x09, 0x00,
+	0x00, 0xff, 0xff, 0x99, 0xce, 0x39, 0x84, 0xad, 0x09, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -799,9 +956,11 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ApplicationClient interface {
-	GetMasterData(ctx context.Context, in *MasterRequest, opts ...grpc.CallOption) (*MasterResponse, error)
-	GetApplicationData(ctx context.Context, in *ApplicationRequest, opts ...grpc.CallOption) (*ApplicationResponse, error)
-	GetApplicationContent(ctx context.Context, in *ApplicationContentRequest, opts ...grpc.CallOption) (*ApplicationContentResponse, error)
+	GetMasterData(ctx context.Context, in *MasterDataRequest, opts ...grpc.CallOption) (*MasterDataResponse, error)
+	GetApplicationData(ctx context.Context, in *DataRequest, opts ...grpc.CallOption) (*ApplicationDataResponse, error)
+	GetReferencedData(ctx context.Context, in *DataRequest, opts ...grpc.CallOption) (*ReferencedDataResponse, error)
+	GetApplicationContent(ctx context.Context, in *ApplicationContentRequest, opts ...grpc.CallOption) (*ContentResponse, error)
+	GetReferencedContent(ctx context.Context, in *ReferencedContentRequest, opts ...grpc.CallOption) (*ContentResponse, error)
 }
 
 type applicationClient struct {
@@ -812,8 +971,8 @@ func NewApplicationClient(cc *grpc.ClientConn) ApplicationClient {
 	return &applicationClient{cc}
 }
 
-func (c *applicationClient) GetMasterData(ctx context.Context, in *MasterRequest, opts ...grpc.CallOption) (*MasterResponse, error) {
-	out := new(MasterResponse)
+func (c *applicationClient) GetMasterData(ctx context.Context, in *MasterDataRequest, opts ...grpc.CallOption) (*MasterDataResponse, error) {
+	out := new(MasterDataResponse)
 	err := c.cc.Invoke(ctx, "/applicationproto.Application/GetMasterData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -821,8 +980,8 @@ func (c *applicationClient) GetMasterData(ctx context.Context, in *MasterRequest
 	return out, nil
 }
 
-func (c *applicationClient) GetApplicationData(ctx context.Context, in *ApplicationRequest, opts ...grpc.CallOption) (*ApplicationResponse, error) {
-	out := new(ApplicationResponse)
+func (c *applicationClient) GetApplicationData(ctx context.Context, in *DataRequest, opts ...grpc.CallOption) (*ApplicationDataResponse, error) {
+	out := new(ApplicationDataResponse)
 	err := c.cc.Invoke(ctx, "/applicationproto.Application/GetApplicationData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -830,9 +989,27 @@ func (c *applicationClient) GetApplicationData(ctx context.Context, in *Applicat
 	return out, nil
 }
 
-func (c *applicationClient) GetApplicationContent(ctx context.Context, in *ApplicationContentRequest, opts ...grpc.CallOption) (*ApplicationContentResponse, error) {
-	out := new(ApplicationContentResponse)
+func (c *applicationClient) GetReferencedData(ctx context.Context, in *DataRequest, opts ...grpc.CallOption) (*ReferencedDataResponse, error) {
+	out := new(ReferencedDataResponse)
+	err := c.cc.Invoke(ctx, "/applicationproto.Application/GetReferencedData", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *applicationClient) GetApplicationContent(ctx context.Context, in *ApplicationContentRequest, opts ...grpc.CallOption) (*ContentResponse, error) {
+	out := new(ContentResponse)
 	err := c.cc.Invoke(ctx, "/applicationproto.Application/GetApplicationContent", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *applicationClient) GetReferencedContent(ctx context.Context, in *ReferencedContentRequest, opts ...grpc.CallOption) (*ContentResponse, error) {
+	out := new(ContentResponse)
+	err := c.cc.Invoke(ctx, "/applicationproto.Application/GetReferencedContent", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -841,23 +1018,31 @@ func (c *applicationClient) GetApplicationContent(ctx context.Context, in *Appli
 
 // ApplicationServer is the server API for Application service.
 type ApplicationServer interface {
-	GetMasterData(context.Context, *MasterRequest) (*MasterResponse, error)
-	GetApplicationData(context.Context, *ApplicationRequest) (*ApplicationResponse, error)
-	GetApplicationContent(context.Context, *ApplicationContentRequest) (*ApplicationContentResponse, error)
+	GetMasterData(context.Context, *MasterDataRequest) (*MasterDataResponse, error)
+	GetApplicationData(context.Context, *DataRequest) (*ApplicationDataResponse, error)
+	GetReferencedData(context.Context, *DataRequest) (*ReferencedDataResponse, error)
+	GetApplicationContent(context.Context, *ApplicationContentRequest) (*ContentResponse, error)
+	GetReferencedContent(context.Context, *ReferencedContentRequest) (*ContentResponse, error)
 }
 
 // UnimplementedApplicationServer can be embedded to have forward compatible implementations.
 type UnimplementedApplicationServer struct {
 }
 
-func (*UnimplementedApplicationServer) GetMasterData(ctx context.Context, req *MasterRequest) (*MasterResponse, error) {
+func (*UnimplementedApplicationServer) GetMasterData(ctx context.Context, req *MasterDataRequest) (*MasterDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMasterData not implemented")
 }
-func (*UnimplementedApplicationServer) GetApplicationData(ctx context.Context, req *ApplicationRequest) (*ApplicationResponse, error) {
+func (*UnimplementedApplicationServer) GetApplicationData(ctx context.Context, req *DataRequest) (*ApplicationDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetApplicationData not implemented")
 }
-func (*UnimplementedApplicationServer) GetApplicationContent(ctx context.Context, req *ApplicationContentRequest) (*ApplicationContentResponse, error) {
+func (*UnimplementedApplicationServer) GetReferencedData(ctx context.Context, req *DataRequest) (*ReferencedDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReferencedData not implemented")
+}
+func (*UnimplementedApplicationServer) GetApplicationContent(ctx context.Context, req *ApplicationContentRequest) (*ContentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetApplicationContent not implemented")
+}
+func (*UnimplementedApplicationServer) GetReferencedContent(ctx context.Context, req *ReferencedContentRequest) (*ContentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReferencedContent not implemented")
 }
 
 func RegisterApplicationServer(s *grpc.Server, srv ApplicationServer) {
@@ -865,7 +1050,7 @@ func RegisterApplicationServer(s *grpc.Server, srv ApplicationServer) {
 }
 
 func _Application_GetMasterData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MasterRequest)
+	in := new(MasterDataRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -877,13 +1062,13 @@ func _Application_GetMasterData_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/applicationproto.Application/GetMasterData",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ApplicationServer).GetMasterData(ctx, req.(*MasterRequest))
+		return srv.(ApplicationServer).GetMasterData(ctx, req.(*MasterDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Application_GetApplicationData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ApplicationRequest)
+	in := new(DataRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -895,7 +1080,25 @@ func _Application_GetApplicationData_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/applicationproto.Application/GetApplicationData",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ApplicationServer).GetApplicationData(ctx, req.(*ApplicationRequest))
+		return srv.(ApplicationServer).GetApplicationData(ctx, req.(*DataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Application_GetReferencedData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServer).GetReferencedData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/applicationproto.Application/GetReferencedData",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServer).GetReferencedData(ctx, req.(*DataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -918,6 +1121,24 @@ func _Application_GetApplicationContent_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Application_GetReferencedContent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReferencedContentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServer).GetReferencedContent(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/applicationproto.Application/GetReferencedContent",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServer).GetReferencedContent(ctx, req.(*ReferencedContentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Application_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "applicationproto.Application",
 	HandlerType: (*ApplicationServer)(nil),
@@ -931,8 +1152,16 @@ var _Application_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Application_GetApplicationData_Handler,
 		},
 		{
+			MethodName: "GetReferencedData",
+			Handler:    _Application_GetReferencedData_Handler,
+		},
+		{
 			MethodName: "GetApplicationContent",
 			Handler:    _Application_GetApplicationContent_Handler,
+		},
+		{
+			MethodName: "GetReferencedContent",
+			Handler:    _Application_GetReferencedContent_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

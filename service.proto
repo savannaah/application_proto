@@ -6,10 +6,6 @@ message RequestHeader {
     string token = 1;
 }
 
-message MasterRequest {
-    RequestHeader header = 1;
-}
-
 message Item {
     int32 id = 1;
     string name = 2;
@@ -28,7 +24,11 @@ message Rows {
     map<string, string> Row = 1;
 }
 
-message ApplicationRequest {
+message MasterDataRequest {
+    RequestHeader header = 1;
+}
+
+message DataRequest {
     RequestHeader header = 1;
     string name = 2;
 }
@@ -39,7 +39,13 @@ message ApplicationContentRequest {
     string query = 3;
 }
 
-message MasterResponse {
+message ReferencedContentRequest {
+    RequestHeader header = 1;
+    string name = 2;
+    repeated int32 id = 3;
+}
+
+message MasterDataResponse {
     int32 statusCode = 1;
     string message = 2;
     message Data {
@@ -53,7 +59,7 @@ message MasterResponse {
     Data data = 3;
 }
 
-message ApplicationResponse {
+message ApplicationDataResponse {
     int32 statusCode = 1;
     string message = 2;
     message Data {
@@ -64,19 +70,30 @@ message ApplicationResponse {
     Data data = 3;
 }
 
-message ApplicationContentResponse {
+message ReferencedDataResponse {
     int32 statusCode = 1;
     string message = 2;
     message Data {
         string name = 1;
         repeated Item columns = 2;
-        repeated Rows rows = 3;
+    }
+    Data data = 3;
+}
+
+message ContentResponse {
+    int32 statusCode = 1;
+    string message = 2;
+    message Data {
+        string name = 1;
+        repeated Rows rows = 2;
     }
     Data data = 3;
 }
 
 service Application {
-    rpc GetMasterData(MasterRequest) returns (MasterResponse);
-    rpc GetApplicationData(ApplicationRequest) returns (ApplicationResponse);
-    rpc GetApplicationContent(ApplicationContentRequest) returns (ApplicationContentResponse);
+    rpc GetMasterData(MasterDataRequest) returns (MasterDataResponse);
+    rpc GetApplicationData(DataRequest) returns (ApplicationDataResponse);
+    rpc GetReferencedData(DataRequest) returns (ReferencedDataResponse);
+    rpc GetApplicationContent(ApplicationContentRequest) returns (ContentResponse);
+    rpc GetReferencedContent(ReferencedContentRequest) returns (ContentResponse);
 }
